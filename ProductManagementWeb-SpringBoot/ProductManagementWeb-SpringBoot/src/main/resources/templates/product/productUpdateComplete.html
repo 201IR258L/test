@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/template :: layout(~{::title},~{::body/content()},~{::script},productList)}" lang="ja">
+<head>
+    <meta charset="utf-8">
+	<title>商品変更</title>
+</head>
+<body>
+	<div class="card mt-3">
+		<h5 class="card-header">商品変更完了画面</h5>
+		<div class="card-body">
+			<div class="alert alert-success">
+				商品を変更しました。
+			</div>
+		</div>
+	</div>
+	<a th:href="@{/ProductListServlet}">商品一覧へ</a>
+</body>
+<script type="text/javascript" th:fragment="script">
+</script>
+</html>

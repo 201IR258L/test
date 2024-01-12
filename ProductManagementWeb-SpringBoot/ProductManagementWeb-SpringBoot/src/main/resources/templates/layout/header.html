@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+
+<head>
+<meta charset="utf-8">
+<title>商品管理システム 共通ヘッダー</title>
+</head>
+
+<body>
+	<th:block th:fragment="header(activeMenu)" >
+	<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top mb-3">
+		<a class="navbar-brand" href="/" th:href="@{/ProductListServlet}">商品管理システム</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarText" aria-controls="navbarText"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<th:block th:if="${session.SESSION_KEY_LOGIN_USER != null}" >
+		<div class="collapse navbar-collapse" id="navbarText">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a th:classappend="${activeMenu == 'productList'}? 'active' : ''" class="nav-link" th:href="@{/ProductListServlet}">商品管理</a></li>
+				<li class="nav-item">
+					<a th:classappend="${activeMenu == 'productIssue'}? 'active' : ''" class="nav-link " th:href="@{/ProductInputInitServlet}">商品登録</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link " th:href="@{/LogoutServlet}">Logout</a>
+				</li>
+			</ul>
+			<div class="form-inline my-2 my-lg-0">
+				[[${session.SESSION_KEY_LOGIN_USER.name}]]
+			</div>
+		</div>
+		</th:block>
+	</nav>
+	</th:block>
+</body>
+
+</html>

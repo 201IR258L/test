@@ -1,0 +1,51 @@
+body {
+   margin: 0;
+   background:#eeeeee;
+   text-align:  center;
+   color: #ffffff;
+}
+
+#card {
+    margin: 60px auto 20px;
+    width: 600px;
+    height: 600px;
+    font-size: 36px;
+    line-height: 150px;
+    perspective: 150px;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+#card-front,
+#card-back {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+#card-front {
+    background: #ffffff;
+    color: #000000;
+}
+#card-back {
+    background: #ffffff;
+    color: #000000;
+    transform: rotateY(180deg);
+}
+.open {
+    transform: rotateY(180deg);
+}
+
+#btn {
+    width: 100px;
+    margin: 0 auto;
+    padding: 10px;
+    background: #004466;
+    box-shadow: 0 4px 0 #006688;
+    align-items: center;
+}
+#btn:hover {
+    opacity: 0.9;
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+    version="2.1">
+
+  <description>Project Management core library</description>
+  <display-name>Project Management core</display-name>
+  <tlib-version>1.2</tlib-version>
+  <short-name>pm</short-name>
+  <uri>http://minato.co.jp/jsp/pmtl/core</uri>
+
+  <validator>
+    <description>
+        Provides core validation features for JSTL tags.
+    </description>
+    <validator-class>
+        org.apache.taglibs.standard.tlv.JstlCoreTLV
+    </validator-class>
+  </validator>
+
+  <function>
+    <name>ProductCategory</name>
+    <function-class>jp.co.minato.pmw.constant.ProductCategory</function-class>
+    <function-signature>jp.co.minato.pmw.constant.ProductCategory[] values()</function-signature>
+  </function>
+
+</taglib>

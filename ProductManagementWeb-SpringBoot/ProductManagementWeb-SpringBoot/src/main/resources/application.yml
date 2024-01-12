@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/product_management
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-handlers-package: jp.co.minato.pmw.mapper.typehandler
+
+
+#logging.level.root: INFO
+#logging.level.org.springframework.boot.web.servlet.ServletContextInitializerBeans: DEBUG
+#logging.level.jp.co.minato.pmw.mapper: DEBUG
+#server:context-path: /ProductManagementWeb-SpringBoot
+
+server:
+  port: 8081
+    

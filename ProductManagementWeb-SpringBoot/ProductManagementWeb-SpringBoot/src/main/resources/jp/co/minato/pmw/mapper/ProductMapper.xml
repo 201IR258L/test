@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.minato.pmw.mapper.ProductMapper">
+
+	<select id="find" parameterType="jp.co.minato.pmw.condition.ProductCondition" resultType="jp.co.minato.pmw.mapper.entity.ProductEntity">
+		SELECT
+		  id 
+		 ,product_id 
+		 ,name 
+		 ,category_code as product_category
+		 ,unit_price 
+		 ,purchase_unit_price 
+		 ,registration_date 
+		 ,deleted 
+		 ,create_user_id 
+		 ,create_timestamp 
+		 ,update_user_id 
+		 ,update_timestamp 
+		 ,version_no 
+		FROM
+		 product
+		WHERE
+		 TRUE
+		AND deleted = FALSE
+		<if test="id != null">
+		AND id = #{id}
+		</if>
+		<if test="productId != null">
+		AND product_id = #{productId}
+		</if>
+		<if test="name != null">
+		AND name like #{name} escape '#'
+		</if>
+		<if test="excludeId != null">
+		<![CDATA[
+		AND id <> #{excludeId}
+		]]>
+		</if>
+		ORDER BY product_id ASC
+	</select>
+
+	<insert
+		id="insert"
+		parameterType="jp.co.minato.pmw.mapper.entity.ProductEntity"
+		useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO product ( 
+		   product_id 
+		  ,name 
+		  ,category_code 
+		  ,unit_price 
+		  ,purchase_unit_price 
+		  ,registration_date 
+		  ,deleted 
+		  ,create_user_id 
+		  ,create_timestamp 
+		  ,update_user_id 
+		  ,update_timestamp 
+		  ,version_no 
+		) VALUES (
+		   #{productId}
+		  ,#{name}
+		  ,#{productCategory.code}
+		  ,#{unitPrice} 
+		  ,#{purchaseUnitPrice}
+		  ,#{registrationDate}
+		  ,#{deleted}
+		  ,#{createUserId}
+		  ,#{createTimestamp}
+		  ,#{updateUserId}
+		  ,#{updateTimestamp}
+		  ,#{versionNo}
+		);
+	</insert>
+	
+	<update
+		id="update"
+		parameterType="jp.co.minato.pmw.mapper.entity.ProductEntity">
+		UPDATE product SET 
+		   product_id          = #{productId} 
+		  ,name                = #{name} 
+		  ,category_code       = #{productCategory.code} 
+		  ,unit_price          = #{unitPrice} 
+		  ,purchase_unit_price = #{purchaseUnitPrice} 
+		  ,registration_date   = #{registrationDate} 
+		  ,deleted             = #{deleted} 
+		  ,create_user_id      = #{createUserId} 
+		  ,create_timestamp    = #{createTimestamp} 
+		  ,update_user_id      = #{updateUserId} 
+		  ,update_timestamp    = #{updateTimestamp} 
+		  ,version_no          = #{versionNo} 
+		 WHERE id              = #{id} 
+	</update>
+</mapper>

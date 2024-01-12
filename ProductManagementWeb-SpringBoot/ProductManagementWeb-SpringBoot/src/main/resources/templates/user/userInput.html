@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/template :: layout(~{::title},~{::body/content()},~{::script},none)}" lang="ja">
+<head>
+    <meta charset="utf-8">
+	<title>ユーザ登録</title>
+</head>
+<body>
+	<div class="card mt-3">
+		<h5 class="card-header">ユーザ登録画面</h5>
+		<div class="card-body">
+			<th:block th:if="${messageList != null}">
+			<div class="row mb-1">
+				<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+					<th:block th:each="message : ${messageList}" >
+						[[${message}]]<br>
+					 </th:block>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</div>
+			</th:block>
+			<form action="" th:action="@{/public/UserInputServlet}" th:object="${userForm}" method="post"  class="col-8">
+				<div class="form-group row">
+					<label for="loginId" class="col-md-2 col-form-label">ログインID</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" th:field="*{loginId}" placeholder="minato">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="password" class="col-md-2 col-form-label">パスワード</label>
+					<div class="col-md-10">
+						<input type="password" class="form-control" th:field="*{password}" placeholder="minato">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="userName" class="col-md-2 col-form-label">ユーザ名</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" th:field="*{name}" placeholder="ミナト">
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">登録</button>
+			</form>
+		</div>
+	</div>
+	<a th:href="@{/}">トップへ</a>
+</body>
+<script type="text/javascript" th:fragment="script">
+</script>
+</html>

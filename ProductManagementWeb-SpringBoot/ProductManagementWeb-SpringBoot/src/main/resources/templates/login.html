@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/template :: layout(~{::title},~{::body/content()},~{::script},none)}" lang="ja">
+<head>
+    <meta charset="utf-8">
+	<title>商品管理ログイン</title>
+</head>
+<body>
+	<div class="card mt-3">
+		<h5 class="card-header">ログイン画面</h5>
+		<div class="card-body">
+			<div class="row mb-1" th:if="${message != null}">
+				<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+					[[${message}]]
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</div>
+			<form th:action="@{/public/LoginServlet}" th:object="${loginForm}" method="post" class="col-8">
+				<div class="form-group">
+					<label for="loginId">ログインID</label>
+					<input type="text" class="form-control" th:field="*{loginId}">
+				</div>
+				<div class="form-group">
+					<label for="password">パスワード</label>
+					<input type="password" class="form-control" th:field="*{password}">
+				</div>
+				<button type="submit" class="btn btn-primary">ログイン</button>
+			</form>
+		</div>
+	</div>
+
+	<a th:href="@{/public/UserInputInitServlet}">新規ユーザ登録はこちら</a>
+</body>
+<script type="text/javascript" th:fragment="script">
+</script>
+</html>
