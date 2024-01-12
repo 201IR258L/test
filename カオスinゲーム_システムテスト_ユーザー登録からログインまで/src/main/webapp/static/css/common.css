@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.form-title {
+	text-align: center;
+}
+
+.form-label {
+	text-align: right;
+	vertical-align: top;
+}
+
+table {
+	width: 100%;
+}
+
+table.input-table>tbody>tr>td {
+	padding: 10px;
+}
+
+.message {
+	color: #ff0000;
+}
